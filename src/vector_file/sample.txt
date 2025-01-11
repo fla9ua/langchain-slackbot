@@ -1,37 +1,40 @@
-**就業規則**
+**Employee Handbook**
 
-**第1条 目的**
-この就業規則は、〇〇株式会社（以下「会社」という）の従業員の行動規範および労働条件を定めるものであり、円滑な業務遂行と職場の健全な環境を確保することを目的とする。
+**Article 1: Purpose**
+This Employee Handbook outlines the policies and procedures of GlobalTech Inc. (hereinafter referred to as "the Company") to ensure a productive, safe, and professional work environment.
 
-**第2条 労働契約**
-1. 従業員は、入社時に労働契約を締結する。契約内容は、労働条件、給与、勤務地などを含む。契約に基づいて労働を行うものとし、契約違反には適切な措置を講じる。
+**Article 2: Employment Contract**
+1. Employees shall sign an employment contract upon joining the Company, detailing terms of employment, compensation, and workplace location.
+2. Any breach of contract terms may result in disciplinary action.
 
-**第3条 勤務時間**
-1. 基本労働時間は1日8時間、週40時間とするが、業務の特性に応じて柔軟な勤務時間を採用することができる。
-2. 労働時間外の勤務には、法定の時間外手当を支給する。
+**Article 3: Working Hours**
+1. Standard working hours are 8 hours per day, 40 hours per week, with flexible working arrangements available based on job requirements.
+2. Overtime work will be compensated according to local labor laws.
 
-**第4条 休暇**
-1. 年次有給休暇は、勤務開始から6ヶ月後に付与される。付与率は労働時間に応じて決定する。
-2. 特別休暇や育児休暇など、必要に応じてさまざまな休暇を取得できる。ただし、事前に申請が必要である。
+**Article 4: Leave Policy**
+1. Paid annual leave is granted after 6 months of continuous service, with accrual based on working hours.
+2. Various types of leave (e.g., parental leave, sick leave) are available with prior approval.
 
-**第5条 給与**
-1. 給与は、職務内容や経験、業績などに応じて決定する。給与改定は年次に一度行われる。
-2. 給与支払いは月末に行われるが、銀行振込や電子マネーによる支払いも選択できる。
+**Article 5: Compensation**
+1. Salaries are determined based on job responsibilities, experience, and performance, with annual reviews.
+2. Payments are made monthly via bank transfer or digital payment methods.
 
-**第6条 行動規範**
-1. 従業員は、職場でのマナーや他の従業員への尊重を遵守する。ハラスメントや差別は厳禁とする。
-2. 業務中および業務外での会社の機密情報の漏洩や不正利用は禁止する。
+**Article 6: Code of Conduct**
+1. Employees must maintain professional behavior and respect colleagues. Harassment and discrimination are strictly prohibited.
+2. Confidential information must be protected both during and after employment.
 
-**第7条 福利厚生**
-1. 従業員には、健康保険・厚生年金・雇用保険などの社会保険が適用される。さらに、福利厚生プログラムも提供する。
+**Article 7: Benefits**
+1. Employees are covered by social insurance programs (health, pension, unemployment).
+2. Additional benefits include wellness programs and professional development opportunities.
 
-**第8条 制裁措置**
-1. 就業規則に違反した場合、適切な処分を行う。軽微な場合は注意喚起から始まり、重大な場合は懲戒処分を含む措置を取ることがある。
+**Article 8: Disciplinary Actions**
+1. Violations of company policies may result in disciplinary measures, ranging from warnings to termination.
 
-**第9条 規則の変更**
-1. 就業規則の変更は、従業員に適切な告知と説明を行った上で行われる。変更に対する意見や提案を受け付ける。
+**Article 9: Policy Amendments**
+1. Changes to this handbook will be communicated to employees with adequate notice and explanation.
+2. Employee feedback on policy changes is encouraged.
 
-**第10条 最終規定**
-1. 本規則に定められていない事項や細則は、会社の指針に従うものとする。
+**Article 10: General Provisions**
+1. Matters not covered in this handbook shall be governed by company guidelines and local labor laws.
 
-この就業規則は、〇〇株式会社の従業員としての義務と権利を明確にし、職場での健全な環境を維持するための基本的な枠組みとなるものとする。
+This Employee Handbook serves as the foundation for maintaining a professional and productive work environment at GlobalTech Inc.

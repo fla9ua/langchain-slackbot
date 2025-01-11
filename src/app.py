@@ -3,7 +3,7 @@ import logging
 import re
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-import langchain_main as lm
+import main as lm
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s : %(message)s"

@@ -17,6 +17,6 @@ def vector_to_tool():
 
     return create_retriever_tool(
         retriever=vectorstore.as_retriever(),
-        name="Syugyoukisoku",
-        description="就業規則について回答する場合に使用します。",
+        name="WorkRules",
+        description="Use this tool when answering questions about work rules.",
     )

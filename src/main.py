@@ -1,8 +1,9 @@
 import os
 from langchain_openai import ChatOpenAI
-from langchain_core.chat_history import (
-    BaseChatMessageHistory,
+from langchain_core.chat_history import BaseChatMessageHistory
+from langchain_community.chat_message_histories import (
     InMemoryChatMessageHistory,
+    DynamoDBChatMessageHistory,
 )
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -11,17 +12,18 @@ from langchain.agents import (
     create_tool_calling_agent,
 )
 
-from langchain_tools import all_tools
+from tools import all_tools
+from prompts.system_prompts import SYSTEM_PROMPT
 
 store = {}
 
 def chat_with_history():
-    """履歴保持チャット"""
+    """Chat with history"""
     model = ChatOpenAI(model=os.environ.get("MODEL_NAME"), temperature=0)
 
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "あなたは親切で優秀なAIアシスタントです。"),
+            ("system", SYSTEM_PROMPT),
             MessagesPlaceholder(variable_name="history"),
             ("human", "{user_input}"),
             MessagesPlaceholder(variable_name="agent_scratchpad"),
@@ -42,7 +44,7 @@ def chat_with_history():
 
 
 def _get_session_history(session_id: str) -> BaseChatMessageHistory:
-    """ローカルメモリにセッション履歴保存・取得"""
+    """Store and retrieve session history in local memory"""
     if session_id not in store:
         store[session_id] = InMemoryChatMessageHistory()
     return store[session_id]

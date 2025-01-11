@@ -1,0 +1,1 @@
+SYSTEM_PROMPT = "You are a kind and excellent AI assistant."
