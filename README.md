@@ -1,4 +1,4 @@
-![GitHub stars](https://img.shields.io/github/stars/02tYasui/langchain-slackbot.svg)
+r![GitHub stars](https://img.shields.io/github/stars/02tYasui/langchain-slackbot.svg)
 ![Contributors](https://img.shields.io/github/contributors/02tYasui/langchain-slackbot)
 ![GitHub License](https://img.shields.io/github/license/02tYasui/langchain-slackbot)
 
@@ -17,28 +17,46 @@
 
 ## Features
 
-This SlackBot leverages OpenAI API to manage thread history and provides seamless AI integration within Slack. Key features include:
+This SlackBot leverages OpenAI API and LangChain to provide intelligent responses within Slack. Key features include:
 
-- **Thread History Management**: Automatically tracks all interactions within Slack threads, enabling context-aware AI responses.
-- **OpenAI API Integration**: Utilizes OpenAI's powerful capabilities to generate high-quality, relevant responses.
-- **Easy Setup**: Simple setup process using environment variables for quick integration with any Slack workspace.
-- **Mention Response**: Automatically responds when mentioned, allowing team members to directly ask questions or request specific tasks.
-  To enable this feature, configure the bot in the Slack API dashboard and add appropriate event subscriptions to detect mentions.
+- **Intelligent Thread Management**: 
+  - Automatically preserves conversation context within Slack threads
+  - Understands the full thread history for more contextual responses
+  - Seamlessly handles multiple concurrent conversations
+
+- **Advanced AI Integration**: 
+  - Powered by OpenAI's language models
+  - Multiple specialized tools for different tasks:
+    - Web Search: Access to current information
+    - Vector Search: Query internal documents and guidelines
+
+- **Performance Optimized**:
+  - Efficient thread history management using Slack API
+  - Configurable timeouts and retry mechanisms
+  - Detailed logging for monitoring and debugging
+
+- **Easy Setup**: 
+  - Simple configuration through environment variables
+  - Docker support for easy deployment
+  - Flexible tool enabling/disabling
 
 ## Slack Configuration
-#### OAuth Scope
+
+### OAuth Scopes
 ```text
 app_mentions:read
+channels:history
 chat:write
+groups:history
 im:history
 im:read
 im:write
 ```
 
-#### Event Subscriptions
+### Event Subscriptions
 ```text
 app_mention
-app_mentions:read
+message.groups
 message.im
 ```
 
@@ -51,25 +69,32 @@ Refer to `.env.dev` for guidance.
 ```Dotenv
 # Environment
 ENVIRONMENT=dev
+DEBUG=false           # Enable detailed error messages
 
 # OpenAI API
-MODEL_NAME=gpt-4o-mini
+MODEL_NAME=gpt-4     # Or gpt-3.5-turbo
 OPENAI_API_KEY=your_openai_api_key
+MODEL_TEMPERATURE=0   # 0-1, lower for more focused responses
+MODEL_TIMEOUT=30     # Seconds
+MAX_AGENT_ITERATIONS=3
 
 # Slack
 SLACK_APP_TOKEN=your_slack_app_token
 SLACK_BOT_TOKEN=your_slack_bot_token
 SLACK_BOT_ID=your_slack_bot_id
+API_TIMEOUT=60       # Slack API timeout
 
-# DynamoDB (for production chat history)
-DYNAMODB_TABLE_NAME=chat-history
-AWS_REGION=ap-northeast-1
+# Vector Store Configuration
+VECTOR_STORE_PATH=./vector_store
+VECTOR_CHUNK_SIZE=100
+VECTOR_CHUNK_OVERLAP=20
+VECTOR_DOC_PATH=./vector_file/sample.txt
 
 # Tools Configuration
 ENABLE_SEARCH=true
 ENABLE_VECTOR=true
 
-# Langsmith
+# Langsmith (Optional)
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=your_langsmith_api_key
 LANGCHAIN_PROJECT=your_project_name
@@ -111,3 +136,42 @@ cd slackbot
 2. Build and run Docker container:
 ```bash
 docker compose up --build
+```
+
+## System Architecture
+
+The bot uses the following components:
+
+1. **Slack Integration**:
+   - Socket Mode for real-time communication
+   - Thread history tracking for context awareness
+   - Automatic mention detection and response
+
+2. **Language Model**:
+   - OpenAI's GPT models for natural language processing
+   - Configurable temperature and timeout settings
+   - Error handling and retry mechanisms
+
+3. **Tools**:
+   - Web Search: DuckDuckGo integration for current information
+   - Vector Search: Document retrieval using ChromaDB
+   - Customizable tool configuration via environment variables
+
+4. **Logging and Monitoring**:
+   - Detailed logging with file and line information
+   - Performance metrics tracking
+   - Debug mode for development
+
+## Error Handling
+
+The bot includes comprehensive error handling:
+
+- API timeouts and retry logic
+- Invalid input detection
+- Detailed error logging
+- User-friendly error messages
+- Debug mode for development
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
