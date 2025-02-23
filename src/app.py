@@ -6,6 +6,7 @@ from typing import Dict, Any, List
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk.errors import SlackApiError
+from markdown_to_mrkdwn import SlackMarkdownConverter
 import main as lm
 
 # ロギングの設定
@@ -14,6 +15,9 @@ logging.basicConfig(
     format="%(asctime)s %(name)s %(levelname)s [%(filename)s:%(lineno)d] : %(message)s"
 )
 logger = logging.getLogger(__name__)
+
+# Markdownコンバーターの初期化
+markdown_converter = SlackMarkdownConverter()
 
 def validate_environment():
     """環境変数の検証"""
@@ -71,6 +75,14 @@ def get_thread_history(channel: str, thread_ts: str) -> List[Dict[str, Any]]:
         logger.error(f"Error fetching thread history: {str(e)}", exc_info=True)
         return []
 
+def convert_to_mrkdwn(text: str) -> str:
+    """MarkdownをSlackのmrkdwn形式に変換"""
+    try:
+        return markdown_converter.convert(text)
+    except Exception as e:
+        logger.error(f"Error converting markdown to mrkdwn: {str(e)}", exc_info=True)
+        return text
+
 def handle_mention(logger, event, say):
     """メンション時のハンドラー"""
     start_time = time.time()
@@ -111,11 +123,14 @@ def handle_mention(logger, event, say):
         )
         process_time = time.time() - start_process
 
+        # レスポンスをmrkdwn形式に変換
+        mrkdwn_response = convert_to_mrkdwn(content['output'])
+        
         # レスポンス送信
         logger.info(
-            f"Response generated in {process_time:.2f}s - Length: {len(content['output'])}"
+            f"Response generated in {process_time:.2f}s - Length: {len(mrkdwn_response)}"
         )
-        say(content["output"], thread_ts=event["ts"])
+        say(text=mrkdwn_response, thread_ts=event["ts"])
 
     except Exception as e:
         logger.error(f"Error in handle_mention: {str(e)}", exc_info=True)
